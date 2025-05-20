@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  tag-system-mysql-test:
+    image: mysql:8.4.4
+    container_name: tag-system-test # 可以在这里指定容器名称
+    environment:
+      MYSQL_ROOT_PASSWORD: password_mysql
+      MYSQL_DATABASE: tag_system_test
+    ports:
+      - "3306:3306"
+    volumes:
+      # 对于Windows路径，Docker Desktop会自动处理 //d/ 这样的格式
+      # 在Linux/macOS上，这个路径需要是宿主机的绝对路径，例如：
+      # - /path/to/your/project/data/tag_system_mysql_test:/var/lib/mysql
+      - //d/docker_share/tag_system_mysql_test:/var/lib/mysql
+
